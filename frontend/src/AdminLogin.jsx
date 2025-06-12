@@ -5,6 +5,7 @@ export default function AdminLogin({onLogin}) {
   const [password,setPassword]=useState('')
   const login=async e=>{
     e.preventDefault()
+
     const res=await fetch('http://79.110.62.6:3001/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})})
     if(res.ok){ onLogin(); } else { alert('Неверные данные') }
   }
