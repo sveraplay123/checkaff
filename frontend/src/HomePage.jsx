@@ -10,8 +10,10 @@ const reviews = [
 export default function HomePage() {
   return (
     <div className="container">
+      <img className="hero" src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?auto=format&fit=crop&w=1200&q=80" alt="stage" />
       <h1>Конкурс талантов</h1>
       <p>Покажи свой талант и получи признание!</p>
+      <p>Мы принимаем любые жанры и направления: от вокала и танцев до рисунка и стендапа.</p>
       <div className="actions">
         <Link to="/apply">Подать заявку</Link>
         <Link to="/chat">Чат поддержки</Link>
@@ -26,6 +28,7 @@ export default function HomePage() {
           </div>
         ))}
       </div>
+      <p style={{marginTop:'20px'}}>Финальное шоу состоится 30 июля в городском дворце молодёжи.</p>
     </div>
   )
 }

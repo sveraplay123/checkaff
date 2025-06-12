@@ -8,9 +8,9 @@ export default function AdminDashboard() {
   const [current,setCurrent]=useState(null)
 
   const load = async () => {
-    const s = await fetch('http://localhost:3001/api/stats').then(r=>r.json())
-    const a = await fetch('http://localhost:3001/api/applications').then(r=>r.json())
-    const c = await fetch('http://localhost:3001/api/chat').then(r=>r.json())
+    const s = await fetch('http://0.0.0.0:3001/api/stats').then(r=>r.json())
+    const a = await fetch('http://0.0.0.0:3001/api/applications').then(r=>r.json())
+    const c = await fetch('http://0.0.0.0:3001/api/chat').then(r=>r.json())
     setStats(s); setApps(a); setChats(c)
   }
   useEffect(()=>{ load(); },[])
@@ -18,7 +18,7 @@ export default function AdminDashboard() {
   const sendReply = async e => {
     e.preventDefault()
     if(!current) return
-    await fetch('http://localhost:3001/api/adminReply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:current.name,email:current.email,message:reply})})
+    await fetch('http://0.0.0.0:3001/api/adminReply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:current.name,email:current.email,message:reply})})
     setReply(''); load();
   }
 

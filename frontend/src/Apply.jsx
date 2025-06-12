@@ -5,7 +5,7 @@ export default function Apply() {
   const handleChange = e => setForm({...form,[e.target.name]:e.target.value})
   const submit = async e => {
     e.preventDefault()
-    await fetch('http://localhost:3001/api/applications',{
+    await fetch('http://0.0.0.0:3001/api/applications',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(form)

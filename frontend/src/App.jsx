@@ -8,7 +8,9 @@ import { useState, useEffect } from 'react'
 
 export default function App() {
   const [loggedIn,setLoggedIn] = useState(false)
-  useEffect(()=>{fetch('http://localhost:3001/api/visit',{method:'POST'})},[])
+  useEffect(()=>{
+    fetch('http://0.0.0.0:3001/api/visit',{method:'POST'})
+  },[])
   return(
     <Router>
       <Routes>

@@ -7,7 +7,7 @@ export default function Chat() {
   const [messages,setMessages]=useState([])
 
   const loadChats = async () => {
-    const res = await fetch('http://localhost:3001/api/chat')
+    const res = await fetch('http://0.0.0.0:3001/api/chat')
     const data = await res.json()
     const chat = data.find(c=>c.name===user.name && c.email===user.email)
     if(chat) setMessages(chat.messages)
@@ -17,7 +17,7 @@ export default function Chat() {
 
   const send = async e => {
     e.preventDefault()
-    await fetch('http://localhost:3001/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:user.name,email:user.email,message})})
+    await fetch('http://0.0.0.0:3001/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:user.name,email:user.email,message})})
     setMessage('')
     loadChats()
   }
