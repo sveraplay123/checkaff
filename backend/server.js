@@ -68,6 +68,6 @@ app.post('/api/login', (req, res) => {
   }
 });
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, '79.110.62.6', () => {
   console.log(`Server running on port ${port}`);
 });

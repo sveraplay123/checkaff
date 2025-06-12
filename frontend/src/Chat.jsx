@@ -7,7 +7,7 @@ export default function Chat() {
   const [messages,setMessages]=useState([])
 
   const loadChats = async () => {
-    const res = await fetch('http://0.0.0.0:3001/api/chat')
+    const res = await fetch('http://79.110.62.6:3001/api/chat')
     const data = await res.json()
     const chat = data.find(c=>c.name===user.name && c.email===user.email)
     if(chat) setMessages(chat.messages)
@@ -17,7 +17,7 @@ export default function Chat() {
 
   const send = async e => {
     e.preventDefault()
-    await fetch('http://0.0.0.0:3001/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:user.name,email:user.email,message})})
+    await fetch('http://79.110.62.6:3001/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:user.name,email:user.email,message})})
     setMessage('')
     loadChats()
   }
@@ -36,7 +36,9 @@ export default function Chat() {
     <div className="container">
       <h1>Чат поддержки</h1>
       <div className="chat-box">
-        {messages.map((m,i)=>(<div key={i} className={m.from}>{m.from}: {m.text}</div>))}
+        {messages.map((m,i)=>(
+          <div key={i} className={`message ${m.from}`}>{m.text}</div>
+        ))}
       </div>
       <form onSubmit={send} className="chat-form">
         <input value={message} onChange={e=>setMessage(e.target.value)} placeholder="Сообщение" />
